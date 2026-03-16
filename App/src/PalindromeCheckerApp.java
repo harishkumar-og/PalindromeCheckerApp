@@ -1,27 +1,30 @@
-import java.util.Scanner;
+class PalindromeChecker {
+
+    public boolean checkPalindrome(String word) {
+
+        String reversed = "";
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        return word.equals(reversed);
+    }
+}
 
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
-        int left = 0;
-        int right = normalized.length() - 1;
-        boolean palindrome = true;
 
-        while (left < right) {
-            if (normalized.charAt(left) != normalized.charAt(right)) {
-                palindrome = false;
-                break;
-            }
-            left++;
-            right--;
-        }
+        String word = "MALAYALAM";
 
-        if (palindrome) {
-            System.out.println("Palindrome");
+        PalindromeChecker checker = new PalindromeChecker();
+
+        if (checker.checkPalindrome(word)) {
+            System.out.println(word + " is a Palindrome");
         } else {
-            System.out.println("Not Palindrome");
+            System.out.println(word + " is not a Palindrome");
         }
+
     }
 }
